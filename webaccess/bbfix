@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# bbfix, by Patrick Reynolds (reynolds .at. cs duke edu)
+# Too trivial to copyright.  It's in the public domain!
+#
+# Usage:
+#   ./bbfix foo.eps
+
+if [ $# = 0 ]; then
+	echo "Usage:"
+	echo "  $0 file.eps [file.eps [file.eps [...]]]"
+	exit
+fi
+
+for fn in "$@"; do
+	BB=`gs -q -sDEVICE=bbox -dNOPAUSE -dBATCH $fn 2>&1 | grep '^%%BoundingBox'`
+	perl -i -pne 's/^%%BoundingBox.*/'"$BB"'/' $fn
+done

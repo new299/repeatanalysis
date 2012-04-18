@@ -1,0 +1,69 @@
+body {
+  font-family : Verdana, Arial, sans-serif;
+  background-color: #DDDDDD;
+}
+
+a:link,a:visited,a:active {
+  color: purple;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #FF0000;
+  background-color: transparent;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 25px;
+  padding: 1px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 11px;
+  text-align: left;
+}
+
+div.mainpage {
+  margin:auto;
+  float:center;
+  align:center;
+  width:850px;
+  background-color :#CCCCFF;;
+}
+
+div.header  {
+  background: url('http://4g.soton.ac.uk/images/banner.jpg') center right repeat;
+  height:100px;
+  width:850px;
+  float:center;
+  align:center;
+}
+
+div.header_text {
+  margin:4px;
+  align:right;
+  text-align:right;
+  color:white;
+  font-family: Verdana, Arial, sans-serif;
+  font-size:22pt;
+}
+
+div.content {
+  width:850px;
+  float:center;
+  align:center;
+  background-color :#CCCCFF;
+}
+
+div.content_text {
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:10px;
+  margin-right:10px;
+}

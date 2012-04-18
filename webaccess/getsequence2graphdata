@@ -1,0 +1,29 @@
+#! /bin/bash
+
+csplit -z $1 '/>/' '{*}' --prefix=$1.
+
+for file in $1.*
+do  
+
+  awk '{if($1 == ">") {for (i=2; i<=NF; i++) {print $i;} } else {print "#" $0}}' $file | awk '
+    BEGIN{   FS=","; n=1; entry[0] = 0;}
+
+    FILENAME != "-" {
+      entry[n] = $0;
+      n++;
+      next
+    }
+
+    FILENAME == "-" {if(substr($1,0,1) != "#") {print entry[$1] + $2 " 0";} else {print $0;}}' $2.flat.breaks.contig_starts - > $file.plotdata
+
+  sequence_length=`tail -n 1 $2.flat.breaks.contig_starts`
+  cat ./getsequence_template.gnuplot | sed "s/XXXSEQUENCESIZEXXX/$sequence_length/" > $file.gnuplot
+  echo "set output '$file.png'" >> $file.gnuplot
+  echo "plot '$file.plotdata' with points " >> $file.gnuplot
+
+  /usr/local/bin/gnuplot $file.gnuplot
+
+  awk 'BEGIN{n=0;}{if($1 == ">") {print "<div class=\"sequence_repeats\"><div class=\"sequence_id\">" n "</div><div class=\"sequence_repeat_outer\"><div class =\"sequence_repeats_locations\">"; for (i=2; i<=NF; i++) {print $i;}; print "</div>"; n++;} else {print "<div class=\"sequence_repeats_sequence\">" $0 "</div><div class=\"sequence_repeats_graph\"><IMG SRC=\"./temp/'`basename $file`'.png\"></div></div></div>";}}' $file >> $1.html
+
+
+done

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="4g.css">
+<title>The 4G Project</title>
+</head>
+<body>
+
+
+<div class="mainpage">
+<div class="header">
+<img align="left" src="http://www.4g.soton.ac.uk/images/4G_150.png" alt="4G Logo">
+</div>
+<div class="content">
+<div class="content_text">
+<form enctype="multipart/form-data" action="repeat_tools.php" method="post">
+	<input type="hidden" name="type" value="repeatscore" />
+	Genome file: <input name="userfile" type="file" /><BR><BR>
+        Maximum repeats: <input name="repeat_max" type="text" value="100" /><BR><BR>
+        Maximum length: <input name="length_max" type="text" value="100" /><BR><BR>
+        Use reverse strand: <input name="reverse" type="checkbox" /><BR><BR>
+        Raw data file: <input name="raw" type="checkbox" />
+
+	<BR><BR>
+	<BR>
+	<input type="submit" value="Submit" />
+</form>
+<BR>
+File, should be a fasta DNA/Protein sequence file or if raw is selected any file. 
+Processing a 5Mb fasta file will take around 1min, you should be able to process files up to at least 10Mb using this server.
+</div>
+</div>
+</div>
+</BODY></HTML>
