@@ -328,7 +328,7 @@ public:
 				}
 	
 				// Compare second character
-				if(((SA0Index+1) >= len) && ((SA12Index+1) >= len)) sleep(0); else
+//				if(((SA0Index+1) >= len) && ((SA12Index+1) >= len)) sleep(0); else
 				if((SA0Index+1) >= len) SA12isMore = true;            else
 				if((SA12Index+1) >= len) SA12isMore = false;          else
 				if(s[SA12Index+1] > s[SA0Index+1]) SA12isMore = true; else
@@ -432,7 +432,7 @@ template <class ASequence, class ArrayType> int radixSortPass(ArrayType &listA,u
 //	cout << "RadixPass" << endl;
 	for(n=0;n<len;n++) {
 		
-		if(listA[n] > 0) sleep(0);
+		//if(listA[n] > 0) sleep(0);
 
 		unsigned long long int symbol;
 		if(listA[n]+offset >= slen) symbol = 0; else

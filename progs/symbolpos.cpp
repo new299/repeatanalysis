@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "stringify.h"
 using namespace std;
 
 int main(int argc,char **argv) {
@@ -16,7 +17,7 @@ int main(int argc,char **argv) {
   int find_symbol='#';
 
   if(argc > 3) {
-    find_symbol=atoi(argv[3]);
+    find_symbol=convertTo<int>(argv[3]);
   }
 
   int marker=127;

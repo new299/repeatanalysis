@@ -6,6 +6,7 @@
 #include "get_sequence.h"
 #include "stdio.h"
 #include "offset2contigposhtml.h"
+#include "stringify.h"
 
 using namespace std;
 
@@ -16,8 +17,8 @@ int main(int argc,char **argv) {
     return 0;
   }
 
-  int repeats = atoi(argv[2]);
-  int length  = atoi(argv[3]);
+  int repeats = convertTo<int>(argv[2]);
+  int length  = convertTo<int>(argv[3]);
 
   int break_detect = false;
   int break_symbol;

@@ -11,15 +11,7 @@ public:
  BadConversion(const std::string& s)
       : std::runtime_error(s) {}
 };
-/*
-inline std::string stringify(double x)
-{
-  std::ostringstream o;
-  if (!(o << std::fixed << x))
-    throw BadConversion("stringify(double)");
-  return o.str();
-}
-*/
+
 template<class _type>
 inline std::string stringify(_type x)
 {
@@ -40,3 +32,4 @@ inline _type convertTo(const std::string& s)
 }
 
 #endif
+

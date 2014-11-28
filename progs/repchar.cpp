@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "stringify.h"
 using namespace std;
 
 int main(int argc,char **argv) {
@@ -19,11 +20,11 @@ int main(int argc,char **argv) {
   int rep_char='#';
 
   if(argc > 3) {
-    find_char=atoi(argv[3]);
+    find_char=convertTo<int>(argv[3]);
   }
 
   if(argc > 4) {
-    rep_char=atoi(argv[4]);
+    rep_char=convertTo<int>(argv[4]);
   }
 
 

@@ -7,6 +7,8 @@
 #include "get_sequence.h"
 #include "stdio.h"
 #include "offset2contigpos.h"
+#include "stringify.h"
+#include "string.h"
 
 using namespace std;
 
@@ -21,11 +23,11 @@ int main(int argc,char **argv) {
   ofstream getseqfile(argv[2]);
   ofstream getmaxfile(argv[3]);
 
-  int repeats = atoi(argv[4]);
-  int length  = atoi(argv[5]);
+  int repeats = convertTo<int>(argv[4]);
+  int length  = convertTo<int>(argv[5]);
 
   bool get_maximal=false;
-  if(strcmp(argv[7],"true") == 0) get_maximal=true; else get_maximal=false; 
+  if(string(argv[7]) == string("true")) get_maximal=true; else get_maximal=false; 
 
   int break_detect = false;
   int break_symbol;
@@ -33,7 +35,7 @@ int main(int argc,char **argv) {
   Offset2ContigPos convPos(argv[6]);
 
   bool breaks = false;
-  if(argc > 7) {breaks=false; break_detect = true; break_symbol = atoi(argv[8]);}
+  if(argc > 7) {breaks=false; break_detect = true; break_symbol = convertTo<int>(argv[8]);}
 
   // load string in to s
   BasePlusArray<unsigned char,255,int,int,int> *s = new BasePlusArray<unsigned char,255,int,int,int>;

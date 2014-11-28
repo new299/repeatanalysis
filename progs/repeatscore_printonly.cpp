@@ -6,6 +6,7 @@
 #include "SimpleArray.h"
 #include "combined.h"
 #include "stdio.h"
+#include "stringify.h"
 
 using namespace std;
 
@@ -16,11 +17,11 @@ int main(int argc,char **argv) {
     return 0;
   }
 
-  int max_repeats = atoi(argv[2]);
-  int max_length  = atoi(argv[3]);
+  int max_repeats = convertTo<int>(argv[2]);
+  int max_length  = convertTo<int>(argv[3]);
   bool breaks = false;
   char break_symbol;
-  if(argc > 4) {break_symbol = atoi(argv[4]); breaks=true;}
+  if(argc > 4) {break_symbol = convertTo<int>(argv[4]); breaks=true;}
 
   // load string in to s
   BasePlusArray<unsigned char,255,int,int,int> *s = new BasePlusArray<unsigned char,255,int,int,int>;

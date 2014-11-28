@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "stringify.h"
 using namespace std;
 
 int main(int argc,char **argv) {
@@ -16,7 +17,7 @@ int main(int argc,char **argv) {
   int break_marker=10;
 
   if(argc > 3) {
-    break_marker=atoi(argv[3]);
+    break_marker=convertTo<int>(argv[3]);
   }
 
   int marker=127;

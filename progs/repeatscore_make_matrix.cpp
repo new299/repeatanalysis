@@ -5,6 +5,7 @@
 #include "SimpleArray.h"
 #include "combined.h"
 #include "stdio.h"
+#include "stringify.h"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ int main(int argc,char **argv) {
     return 0;
   }
 
-  int breaks = atoi(argv[2]);
+  int breaks = convertTo<int>(argv[2]);
 
   // load string into s
 

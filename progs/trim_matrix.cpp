@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include "stringify.h"
 using namespace std;
 
 int main(int argc,char **argv) {
@@ -10,8 +11,8 @@ int main(int argc,char **argv) {
     return 0;
   }
 
-  int x_trim = atoi(argv[2]);
-  int y_trim = atoi(argv[3]);
+  int x_trim = convertTo<int>(argv[2]);
+  int y_trim = convertTo<int>(argv[3]);
 
   ifstream infile(argv[1]);
   for(int y=0;!infile.eof() && (y<y_trim);y++) {
