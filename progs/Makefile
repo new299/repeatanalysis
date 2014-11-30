@@ -1,6 +1,6 @@
 RM = /bin/rm -f
 
-C++ = g++
+C++ = emcc
 CCFLAGS = -I. -O3
 
 LDFLAGS =
@@ -56,6 +56,9 @@ add_unique_breaks: add_unique_breaks.cpp
 getsequence: get_sequence.cpp
 	@echo --- $@ ---
 	$(C++) $(CCFLAGS) get_sequence.cpp -o bin/getsequence
+
+repeatscore_ems: repeatscore_ems.cpp
+	emcc ./repeatscore_ems.cpp -o repeatscore_ems.js -s EXPORTED_FUNCTIONS="['_repeat_score']" -s SAFE_HEAP=1 -g -s ASSERTIONS=1 
 
 clean:
 	@echo --- $@ ---

@@ -37,6 +37,7 @@ int repeatscore(vector<int> &lcp,vec2d **C_ptr) {
   for(int i=1;i<n;i++) // create height
     height[lcp[i]].push_back(i);
 
+  printf("got here");
   *C_ptr = new vec2d(v_max+2,vector<int>(n,0));
   vec2d &C = **C_ptr;
 
