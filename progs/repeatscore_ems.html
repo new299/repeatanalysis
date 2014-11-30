@@ -38,7 +38,7 @@ var retarrayptr = Module.ccall('repeat_score', // name of C function
   [strptr]); // arguments
 
 // Convert the resulting pointer to a JS array
-var retarray = read_1d_int32_array(retarrayptr,myarray.length);
+var retarray = read_1d_int32_array(retarrayptr,10000);
 document.write(retarray);
 
 </script>

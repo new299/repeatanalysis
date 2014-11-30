@@ -38,11 +38,12 @@ int *repeat_score(char *inputstring) {
   }
   
 
-  vector<vector<int> > *C_ptr;
-  int score[100][100];
-  int result = repeatscore(lcp_vector,&C_ptr);
-  vector<vector<int> > &C = *C_ptr;
+ // vector<vector<int> > *C_ptr;
+ // int score[100][100];
+ // int result = repeatscore(lcp_vector,&C_ptr);
+ // vector<vector<int> > &C = *C_ptr;
 
+/*
   for(int j=0;j<C[0].size() && (j<100);j++) {
     for(int i=1;i<C.size() && (i<100);i++) {
       if(j==0) C[i][j] -= (i*breaks)-1;
@@ -50,6 +51,8 @@ int *repeat_score(char *inputstring) {
       repeat_score[i+(j*100)] = C[i][j];
     }
   }
+*/
+ // repeatscore_printonly(lcp_vector,1,100,100);
 
   return repeat_score;
 }
