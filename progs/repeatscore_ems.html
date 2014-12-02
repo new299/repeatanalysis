@@ -1,48 +1,37 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <body>
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+
+
 <script src="repeatscore_ems.js"></script>
+<script src="repeatscore.js"></script>
 
 <script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
 
-function write_1d_int32_array(ptr,array) {
+    for (var i = 0, f; f = files[i]; i++) {
 
-  for(i=0;i<array.length;i++) {
-    Module.setValue(ptr,array[i],'i32');
-    ptr += 4;
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          var s = String.fromCharCode.apply(null, new Uint8Array(e.target.result));
+          document.write(get_repeatscore(s));
+        };
+      })(f);
+
+      // Read in the file as an ArrayBuffer
+      reader.readAsArrayBuffer(f);
+    }
   }
 
-}
-
-function read_1d_int32_array(ptr,length) {
-
-  var array = [];
-
-  for(i=0;i<length;i++) {
-    var value = Module.getValue(ptr+(i*4),'i32');
-    array.push(value);
-  }
-
-  return array;
-}
-
-// test1 - a C function that takes, and returns a C style string (char *)
-
-var mystring = "testtestestestestestsetestetstes";
-var strptr = Module._malloc(mystring.length);
-Module.writeAsciiToMemory(mystring, strptr);
-
-var retarrayptr = Module.ccall('repeat_score', // name of C function
-  'number', // return type
-  ['number'], // argument types
-  [strptr]); // arguments
-
-// Convert the resulting pointer to a JS array
-var retarray = read_1d_int32_array(retarrayptr,10000);
-document.write(retarray);
-
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
-
 
 </body>
 </html>
+

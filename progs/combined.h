@@ -59,10 +59,11 @@ int repeatscore(vector<int> &lcp,vec2d **C_ptr) {
       C[k][p.set_size(l)-1]++; // add new set
     }
   }
+  return 0;
 }
 
 int repeatscore_printonly(vector<int> &lcp,int breaks,int max_repeats,int max_length) {
-/*
+
   int n=lcp.size();
   DisjSets p(n);
 
@@ -118,5 +119,5 @@ int repeatscore_printonly(vector<int> &lcp,int breaks,int max_repeats,int max_le
 
   }
   cout << endl;
-*/
+  return 0;
 }
