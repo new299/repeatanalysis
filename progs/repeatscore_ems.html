@@ -4,9 +4,19 @@
 <input type="file" id="files" name="files[]" multiple />
 <output id="list"></output>
 
+<style>
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none; //important
+}
+</style>
 
+<script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="repeatscore_ems.js"></script>
 <script src="repeatscore.js"></script>
+<script src="heatmap.js"></script>
+<script src="linegraph.js"></script>
 
 <script>
   function handleFileSelect(evt) {
@@ -20,7 +30,10 @@
       reader.onload = (function(theFile) {
         return function(e) {
           var s = String.fromCharCode.apply(null, new Uint8Array(e.target.result));
-          document.write(get_repeatscore(s));
+          var repeatscoredata = get_repeatscore(s);
+          add_linegraph(repeatscoredata.slice(0,100),100);
+          add_heatmap(repeatscoredata,100,100,10);
+          document.write(repeatscoredata.slice(0,50));
         };
       })(f);
 

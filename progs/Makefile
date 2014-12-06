@@ -1,6 +1,6 @@
 RM = /bin/rm -f
 
-C++ = emcc
+C++ = g++
 CCFLAGS = -I. -O3
 
 LDFLAGS =
